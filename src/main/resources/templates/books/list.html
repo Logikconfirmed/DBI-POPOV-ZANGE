@@ -27,7 +27,7 @@
             <td th:text="${book.isbn}">ISBN</td>
             <td th:text="${book.releaseYear}">2024</td>
             <td th:text="${book.publisher != null ? book.publisher.name : 'n/a'}">Publisher</td>
-            <td th:text="${#strings.listJoin(book.authors.?[name], ', ')}">Autoren</td>
+            <td th:text="${#strings.listJoin(book.authors?.![name], ', ')}">Autoren</td>
             <td>
                 <form th:action="@{|/mongo/books/${book.id}/delete|}" method="post" style="display:inline">
                     <button type="submit">Löschen</button>
