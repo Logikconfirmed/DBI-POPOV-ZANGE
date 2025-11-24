@@ -16,4 +16,8 @@ spring:
 app:
   runner:
     enabled: false
+  mongo:
+    index:
+      auto-create: false
+      field: title
 

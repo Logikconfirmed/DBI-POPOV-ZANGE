@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mongo Bücher</title>
+    <link rel="stylesheet" th:href="@{/css/books.css}" />
+</head>
+<body>
+<h1>Mongo Bücher (Embedded)</h1>
+
+<section>
+    <h2>Bestehende Bücher</h2>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Titel</th>
+            <th>ISBN</th>
+            <th>Jahr</th>
+            <th>Publisher</th>
+            <th>Autoren</th>
+            <th>Aktionen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}">Titel</td>
+            <td th:text="${book.isbn}">ISBN</td>
+            <td th:text="${book.releaseYear}">2024</td>
+            <td th:text="${book.publisher != null ? book.publisher.name : 'n/a'}">Publisher</td>
+            <td th:text="${#strings.listJoin(book.authors.?[name], ', ')}">Autoren</td>
+            <td>
+                <form th:action="@{|/mongo/books/${book.id}/delete|}" method="post" style="display:inline">
+                    <button type="submit">Löschen</button>
+                </form>
+                <a th:href="@{|/mongo/books/${book.id}/edit|}">Bearbeiten</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2>Neues Buch anlegen</h2>
+    <form th:action="@{/mongo/books}" th:object="${bookForm}" method="post">
+        <label>Titel <input type="text" th:field="*{title}" required/></label><br/>
+        <label>ISBN <input type="text" th:field="*{isbn}" required/></label><br/>
+        <label>Erscheinungsjahr <input type="number" th:field="*{releaseYear}" min="1900" max="2100" required/></label><br/>
+        <label>Publisher Name <input type="text" th:field="*{publisherName}" required/></label><br/>
+        <label>Publisher Adresse <input type="text" th:field="*{publisherAddress}" required/></label><br/>
+        <label>Autoren (comma getrennt) <input type="text" th:field="*{authors}" required/></label><br/>
+        <button type="submit">Speichern</button>
+    </form>
+</section>
+</body>
+</html>
+

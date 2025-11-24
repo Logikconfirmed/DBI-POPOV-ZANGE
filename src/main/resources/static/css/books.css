@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+th, td {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+form {
+    margin-top: 0.5rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+

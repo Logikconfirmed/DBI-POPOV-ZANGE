@@ -1,6 +1,7 @@
 package com.example.dbi;
 
 import com.example.dbi.BüchereiVerwaltung.Service.LibraryPerformanceTester;
+import com.example.dbi.BüchereiVerwaltung.dto.BenchmarkSummary;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +20,8 @@ class LibraryPerformanceTesterIntegrationTest {
 
     @Test
     void runsFullBenchmarkWithSmallDatasets() {
-        tester.runBenchmark(50, 200);
+        BenchmarkSummary summary = tester.runBenchmark(50, 200);
+        org.assertj.core.api.Assertions.assertThat(summary.getMetrics()).isNotEmpty();
     }
 }
 

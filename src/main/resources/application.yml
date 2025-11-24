@@ -18,3 +18,11 @@ spring:
 logging:
   level:
     root: INFO
+
+app:
+  runner:
+    enabled: true
+  mongo:
+    index:
+      auto-create: true
+      field: title

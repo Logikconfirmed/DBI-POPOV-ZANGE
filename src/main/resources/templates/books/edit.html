@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Buch bearbeiten</title>
+    <link rel="stylesheet" th:href="@{/css/books.css}" />
+</head>
+<body>
+<h1>Buch bearbeiten</h1>
+<form th:action="@{|/mongo/books/${bookId}|}" th:object="${bookForm}" method="post">
+    <label>Titel <input type="text" th:field="*{title}" required/></label><br/>
+    <label>ISBN <input type="text" th:field="*{isbn}" required/></label><br/>
+    <label>Erscheinungsjahr <input type="number" th:field="*{releaseYear}" min="1900" max="2100" required/></label><br/>
+    <label>Publisher Name <input type="text" th:field="*{publisherName}" required/></label><br/>
+    <label>Publisher Adresse <input type="text" th:field="*{publisherAddress}" required/></label><br/>
+    <label>Autoren (comma getrennt) <input type="text" th:field="*{authors}" required/></label><br/>
+    <button type="submit">Speichern</button>
+    <a href="/mongo/books">Abbrechen</a>
+</form>
+
+<form th:action="@{|/mongo/books/${bookId}/delete|}" method="post" style="margin-top:1rem;">
+    <button type="submit">Löschen</button>
+</form>
+</body>
+</html>
+
