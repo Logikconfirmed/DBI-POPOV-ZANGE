@@ -113,5 +113,3 @@ Verantwortliche Klassen:
 5. Probiere `/api/benchmark/run` (z.B. via cURL oder REST-Client) für manuelle Messungen.
 6. Optional: Cloud-Instanz starten, Benchmark dort laufen lassen und lokal `app.cloud.remote-url` auf die Remote-URL setzen; beim nächsten lokalen Benchmark erscheinen Vergleichslogs.
 
-Viel Erfolg beim Präsentieren und Weiterentwickeln! 🎯
-
